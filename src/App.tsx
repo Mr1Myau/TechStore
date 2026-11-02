@@ -11,6 +11,7 @@ import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { Toast } from './components/Toast';
+import { OfflineIndicator } from './components/OfflineIndicator';
 
 export default function App() {
   // Client-side router supporting '/', '/admin', '/admin/login'
@@ -70,6 +71,7 @@ export default function App() {
           <CheckoutModal />
           <OrderSuccessModal onNavigate={navigate} />
           <Toast />
+          <OfflineIndicator />
         </div>
       </StoreProvider>
     </AuthProvider>

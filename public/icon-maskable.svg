@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGradMask" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+  </defs>
+  <!-- Full-bleed background for maskable/adaptive icon -->
+  <rect width="512" height="512" fill="url(#bgGradMask)" />
+  <!-- Centered Lightning Bolt inside 80% safe zone -->
+  <g transform="translate(256, 256) scale(0.72) translate(-256, -256)">
+    <path
+      d="M277 48 L96 288 h160 l-18 176 177 -240 h-160 l18 -224 z"
+      fill="#ffffff"
+      stroke="#ffffff"
+      stroke-width="12"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

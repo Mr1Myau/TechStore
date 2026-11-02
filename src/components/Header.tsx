@@ -3,6 +3,7 @@ import { useStore } from '../context/StoreContext';
 import { useAuth } from '../context/AuthContext';
 import { CATEGORIES } from '../data/initialProducts';
 import { ProductCategory } from '../types';
+import { PWAInstallButton } from './PWAInstallButton';
 import {
   ShoppingBag,
   Search,
@@ -124,7 +125,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           </form>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* PWA Install Button */}
+            <PWAInstallButton variant="header" />
+
             {/* Admin Access Button */}
             <button
               onClick={() => onNavigate(isAuthenticated ? '/admin' : '/admin/login')}
@@ -248,7 +252,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
             ))}
           </div>
 
-          <div className="pt-2 border-t border-slate-100">
+          <div className="pt-2 border-t border-slate-100 space-y-2">
+            <PWAInstallButton variant="mobile" />
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
