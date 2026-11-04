@@ -12,6 +12,7 @@ import { CheckoutModal } from './components/CheckoutModal';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { Toast } from './components/Toast';
 import { OfflineIndicator } from './components/OfflineIndicator';
+import { MobileBottomNav } from './components/MobileBottomNav';
 
 export default function App() {
   // Client-side router supporting '/', '/admin', '/admin/login'
@@ -49,8 +50,8 @@ export default function App() {
             <Header currentPath={currentPath} onNavigate={navigate} />
           )}
 
-          {/* Main Views routing */}
-          <main className="flex-1">
+          {/* Main Views routing with bottom padding on mobile for MobileBottomNav */}
+          <main className="flex-1 pb-20 md:pb-0">
             {currentPath === '/admin' && (
               <AdminDashboardView onNavigate={navigate} />
             )}
@@ -64,6 +65,9 @@ export default function App() {
           {currentPath !== '/admin' && (
             <Footer onNavigate={navigate} />
           )}
+
+          {/* Mobile Native Bottom Navigation Bar */}
+          <MobileBottomNav currentPath={currentPath} onNavigate={navigate} />
 
           {/* Global Interactive Modals & Drawers */}
           <ProductDetailModal />

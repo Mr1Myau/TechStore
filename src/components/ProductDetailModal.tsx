@@ -19,17 +19,20 @@ export const ProductDetailModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden text-slate-900 my-8">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl bg-white border-t sm:border border-slate-200 rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden text-slate-900 max-sm:max-h-[92vh] max-sm:flex max-sm:flex-col sm:my-8 animate-in slide-in-from-bottom-6 sm:slide-in-from-bottom-0 duration-300">
         {/* Close Button */}
         <button
           onClick={() => setSelectedProduct(null)}
-          className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors"
+          className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 p-2 sm:p-2.5 rounded-full bg-slate-100/90 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors shadow-xs"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Mobile drag handle */}
+        <div className="sm:hidden w-12 h-1.5 bg-slate-200 rounded-full mx-auto mt-2.5 mb-1 shrink-0" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 max-sm:overflow-y-auto flex-1">
           {/* Left Column: Image */}
           <div className="relative bg-slate-50 p-6 flex items-center justify-center min-h-[320px] md:min-h-[480px]">
             <img
@@ -147,9 +150,9 @@ export const ProductDetailModal: React.FC = () => {
               </div>
             </div>
 
-            {/* Bottom Actions: Quantity + Add to Cart */}
-            <div className="pt-2">
-              <div className="flex items-center gap-4">
+            {/* Bottom Actions: Sticky on Mobile */}
+            <div className="pt-3 sticky bottom-0 bg-white/95 backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))] border-t border-slate-100 sm:border-0 sm:static sm:bg-transparent -mx-6 px-6 sm:mx-0 sm:px-0 z-10">
+              <div className="flex items-center gap-3 sm:gap-4">
                 {/* Quantity Controls */}
                 <div className="flex items-center border border-slate-200 rounded-xl bg-slate-50 p-1">
                   <button

@@ -398,8 +398,49 @@ export const CatalogView: React.FC = () => {
 
           {/* Product Grid Area */}
           <div className="lg:col-span-3">
+            {/* Mobile Category Horizontal Slider */}
+            <div className="lg:hidden flex items-center gap-1.5 overflow-x-auto pb-3 mb-4 scrollbar-none -mx-4 px-4">
+              <button
+                onClick={() => setFilters((prev) => ({ ...prev, category: 'all' }))}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all shadow-xs shrink-0 ${
+                  filters.category === 'all'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                }`}
+              >
+                <span>Все</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                  filters.category === 'all' ? 'bg-blue-700 text-white' : 'bg-slate-100 text-slate-600'
+                }`}>
+                  {categoryCounts.all}
+                </span>
+              </button>
+              {CATEGORIES.map((cat) => {
+                const isActive = filters.category === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setFilters((prev) => ({ ...prev, category: cat.id }))}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all shadow-xs shrink-0 ${
+                      isActive
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+                    }`}
+                  >
+                    {getCategoryIcon(cat.id)}
+                    <span>{cat.name}</span>
+                    <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                      isActive ? 'bg-blue-700 text-white' : 'bg-slate-100 text-slate-600'
+                    }`}>
+                      {categoryCounts[cat.id]}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
             {filteredProducts.length === 0 ? (
-              <div className="p-12 text-center rounded-3xl bg-white border border-slate-200 shadow-xs">
+              <div className="p-8 sm:p-12 text-center rounded-3xl bg-white border border-slate-200 shadow-xs">
                 <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-4">
                   <Search className="w-8 h-8" />
                 </div>
@@ -415,7 +456,7 @@ export const CatalogView: React.FC = () => {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

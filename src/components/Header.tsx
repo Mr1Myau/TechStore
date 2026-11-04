@@ -65,30 +65,30 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 text-slate-800 shadow-xs">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">
-        <Truck className="w-3.5 h-3.5" />
-        <span>Бесплатная экспресс-доставка по Казахстану при заказе от 15 000 ₸ • Гарантия качества на все товары</span>
+      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 text-center font-medium tracking-wide flex items-center justify-center gap-1.5 sm:gap-2">
+        <Truck className="w-3.5 h-3.5 shrink-0" />
+        <span className="truncate sm:whitespace-normal">Бесплатная экспресс-доставка по Казахстану от 15 000 ₸ • Гарантия</span>
       </div>
 
       {/* Main Header Row */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
           {/* Logo */}
           <div
             onClick={() => onNavigate('/')}
-            className="flex items-center gap-3 cursor-pointer group select-none shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group select-none shrink-0"
           >
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
-              <Zap className="w-6 h-6 fill-white" />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
+              <Zap className="w-5 h-5 sm:w-6 sm:h-6 fill-white" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-2xl font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+              <div className="flex items-center gap-1">
+                <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
                   TechStore
                 </span>
-                <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-600"></span>
               </div>
-              <p className="text-xs text-slate-500 font-medium hidden sm:block">
+              <p className="text-[11px] sm:text-xs text-slate-500 font-medium hidden sm:block">
                 Аксессуары для электроники
               </p>
             </div>

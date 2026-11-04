@@ -70,23 +70,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       {/* Product Content */}
-      <div className="p-4 flex-1 flex flex-col justify-between">
+      <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
         <div>
           {/* Rating and Stock bar */}
-          <div className="flex items-center justify-between text-xs mb-2">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs mb-1.5 sm:mb-2">
             <div className="flex items-center gap-1 text-amber-500">
-              <Star className="w-3.5 h-3.5 fill-amber-400" />
+              <Star className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400" />
               <span className="font-bold text-slate-800">{product.rating.toFixed(1)}</span>
-              <span className="text-slate-400 text-[11px]">({product.reviewsCount})</span>
+              <span className="text-slate-400 text-[10px] sm:text-[11px]">({product.reviewsCount})</span>
             </div>
 
-            <div>
+            <div className="text-[10px] sm:text-[11px] font-semibold">
               {isOutOfStock ? (
-                <span className="text-[11px] font-semibold text-rose-600">Нет в наличии</span>
+                <span className="text-rose-600">Нет</span>
               ) : isLowStock ? (
-                <span className="text-[11px] font-semibold text-amber-600">Осталось: {product.stock} шт.</span>
+                <span className="text-amber-600 font-bold">{product.stock} шт.</span>
               ) : (
-                <span className="text-[11px] font-semibold text-emerald-600">В наличии: {product.stock} шт.</span>
+                <span className="text-emerald-600">В наличии</span>
               )}
             </div>
           </div>
@@ -94,27 +94,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Product Name */}
           <h3
             onClick={() => setSelectedProduct(product)}
-            className="text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors cursor-pointer line-clamp-2 leading-snug mb-2"
+            className="text-xs sm:text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors cursor-pointer line-clamp-2 leading-snug mb-1.5 min-h-[2rem]"
             title={product.name}
           >
             {product.name}
           </h3>
 
           {/* Short description preview */}
-          <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
+          <p className="hidden sm:block text-xs text-slate-500 line-clamp-2 leading-relaxed mb-4">
             {product.description}
           </p>
         </div>
 
         {/* Price and Add to Cart action */}
-        <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
-          <div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-base sm:text-lg font-black text-slate-900">
+        <div className="pt-2 sm:pt-3 border-t border-slate-100 flex items-center justify-between gap-1.5 sm:gap-2 mt-auto">
+          <div className="min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2">
+              <span className="text-sm sm:text-base font-black text-slate-900 truncate">
                 {product.price.toLocaleString('ru-RU')} ₸
               </span>
               {product.oldPrice && (
-                <span className="text-xs text-slate-400 line-through">
+                <span className="text-[10px] sm:text-xs text-slate-400 line-through">
                   {product.oldPrice.toLocaleString('ru-RU')} ₸
                 </span>
               )}
@@ -124,7 +124,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <button
             onClick={() => addToCart(product, 1)}
             disabled={isOutOfStock}
-            className={`flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-150 shrink-0 ${
+            className={`flex items-center justify-center gap-1 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all duration-150 shrink-0 ${
               isOutOfStock
                 ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
                 : isInCart
@@ -136,12 +136,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {isInCart ? (
               <>
                 <Check className="w-3.5 h-3.5" />
-                <span>+1 ({cartItem.quantity})</span>
+                <span className="hidden min-[380px]:inline">+{cartItem.quantity}</span>
               </>
             ) : (
               <>
                 <ShoppingBag className="w-3.5 h-3.5" />
-                <span>В корзину</span>
+                <span className="hidden min-[380px]:inline">Купить</span>
               </>
             )}
           </button>
